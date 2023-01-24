@@ -1,0 +1,127 @@
+Print first index of x in array----------------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+       int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i=0; i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        int val = sc.nextInt();
+        
+        for(int i=0; i<n;i++){
+            if(val==arr[i]){
+                System.out.println(i);
+                return;
+            }
+        }
+        System.out.println(-1);
+    }
+}
+
+
+
+check if X is present in array or not---------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+      
+        boolean flag=false;
+        for(int i=0; i<n ;i++){
+            if(x==arr[i]){
+                flag=true;//I got my element
+            }
+        }
+        
+        if(flag){
+            System.out.print("True");
+        }else{
+            System.out.print("False");
+        }
+        
+    }
+}
+
+
+
+
+
+
+check two arrays are identical--------------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr1[] = new int[n];
+        for(int i=0; i<n; i++){
+            arr1[i]= sc.nextInt();
+        }
+        int m = sc.nextInt();
+        int arr2[] = new int[m];
+        for(int i=0; i<m; i++){
+            arr2[i]= sc.nextInt();
+        }
+        
+        if(n!=m){
+            System.out.print("false");
+        }else{
+            boolean flag =true;
+            for(int i=0; i<n; i++){
+                if(arr1[i] != arr2[i]){
+                    flag=false;
+                }
+            }
+            System.out.print(flag);
+        }
+        
+        
+    }
+}
+
+
+
+
+
+
+Print odd elements of array inline-----------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+        int size = sc.nextInt();
+        
+        //declare my array
+        int arr[] = new int[size];
+        for(int i=0; i<size; i++){
+            arr[i]= sc.nextInt();
+        }
+        for(int i=0; i<size; i++){
+            if(arr[i]%2!=0){
+           System.out.print(arr[i]+" ");
+            }
+        }
+        
+    }
+}
+
+
+
+
+
+
+
+
