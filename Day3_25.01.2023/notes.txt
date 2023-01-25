@@ -1,0 +1,149 @@
+Print Pair-----------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i=0; i<n ; i++){
+            arr[i]= sc.nextInt();
+        }
+        
+        for(int i=0; i<n; i++){
+            for(int j=i+1; j<n; j++){
+                System.out.println(arr[i]+" "+arr[j]);
+            }
+        }
+        
+    }
+}
+
+
+
+
+
+
+Find the pair 4--------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i=0; i<n ; i++){
+            arr[i]= sc.nextInt();
+        }
+        int x=sc.nextInt();
+        
+        for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++){
+                if(arr[i]+arr[j]==x)
+                System.out.println(arr[i]+" "+arr[j]);
+            }
+        }
+    }
+}
+
+
+
+
+
+Greater than me-------------------------------------------------
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i=0; i<n ; i++){
+            arr[i]= sc.nextInt();
+        }
+        //1 2 3 4 5
+        for(int i=0; i<n; i++){// iterating over my array
+            int count =0;  //3
+            // checking for greater number
+            for(int j=0; j<n; j++){
+                if(arr[i]<arr[j]){ //arr[i] = 3, arr[j]=3
+                    count++;
+                }
+            }
+            System.out.print(count+" ");// 4 3
+        }
+    }
+}
+
+
+
+
+
+Find the difference---------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i=0; i<n ; i++){
+            arr[i]= sc.nextInt();
+        }
+        int sum=sc.nextInt();//3
+        //1 2 3 4 5
+        for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++){
+                int abs_val = Math.abs(arr[i]-arr[j]); // arr[i]= 1, arr[j]=4
+                if(abs_val==sum)
+                System.out.println(arr[i]+" "+arr[j]);// 1 4
+            }
+        }
+    }
+}
+
+
+
+
+
+
+Max Count 3--------------------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i=0; i<n ; i++){
+            arr[i]= sc.nextInt();
+        }
+        int maxCount =0;
+        int maxInt =0;
+        
+        for(int i=0; i<n; i++){
+            int count=0;
+            for(int j=0; j<n; j++){
+                if(arr[i]==arr[j])
+                count++;
+            }
+            if(count>maxCount){
+                maxCount=count;
+                maxInt=arr[i];
+            }
+        }
+        
+        System.out.println(maxInt);
+    }
+}
