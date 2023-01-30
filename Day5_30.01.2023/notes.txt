@@ -1,0 +1,286 @@
+Merge two sorted arrays-------------------------------------------------------import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr1= new int[n];
+        for(int i=0; i<n; i++){
+            arr1[i]=sc.nextInt();
+        }
+        int m = sc.nextInt();
+        int[] arr2= new int[m];
+        for(int i=0; i<m; i++){
+            arr2[i]=sc.nextInt();
+        }
+        int[] ans = new int[n+m];
+        int p1=0;// pointer of first array // 1
+        int p2=0;// pointer of second array //1
+        int k=0;// pointer of ans array // 2
+//         4
+// 1 3 5 7
+// 4
+// 2 4 6 8 // n!=m
+       //ans= [1,2,0,0,0,0,0,0]
+        while(p1<n && p2<m){
+            if(arr1[p1]<arr2[p2]){
+                ans[k]=arr1[p1];
+                p1++;
+                k++;
+            }else{
+                 ans[k]=arr2[p2];
+                p2++;
+                k++;
+            }
+        }
+        while(p1<n){
+            ans[k]=arr1[p1];
+                p1++;
+                k++;
+        }
+        while(p2<m){
+            ans[k]=arr2[p2];
+                p2++;
+                k++;
+        }
+        
+        for(int ele:ans){
+            System.out.print(ele+" ");
+        }
+    }
+}
+
+
+
+
+Sort an array in wave form-------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    
+    // Do dry run of this question
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr= new int[n];
+        for(int i=0; i<n; i++){
+            arr[i]=sc.nextInt();
+        }
+        Arrays.sort(arr);
+        for(int i=0; i<n-1; i=i+2){
+            int temp = arr[i];
+            arr[i] =arr[i+1];
+            arr[i+1] = temp;
+        }
+        
+        for(int ele: arr){
+            System.out.print(ele+" ");
+        }
+    }
+}
+
+
+Print all sub arrays-------------------------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr= new int[n];
+        for(int i=0; i<n; i++){
+            arr[i]=sc.nextInt();
+        }
+        //1 2 3 4 5
+        for(int i=0; i<n; i++){
+            for(int j=i; j<n; j++){
+                for(int k=i; k<=j; k++){
+                    System.out.print(arr[k]+" ");// 1 12 123
+                }
+                System.out.println();
+            }
+        }
+    }
+}
+
+
+
+Max sum sub array----------------------------------------------
+
+Kadane's Algo---
+class Solution {
+    public int maxSubArray(int[] nums) {
+        
+//[1,2,3,4,5] -> [1,2], [3,4], [1,2,3], [1], [2], ....
+//15 -> 3,7,6,1,2
+// Bruteforc TC: O[N^3] will not get submit, you will get 
+// Kadane's Algo: used to get the max sum of subarray
+        // sum and maxSum
+        //TC: O[N]
+
+        int sum=0; // 5
+        int maxSum=nums[0]; // 6
+        for(int i=0;i<nums.length;i++){// nums[i] = 4
+            sum+=nums[i];
+            if(sum>maxSum) maxSum=sum;
+            if(sum<0) sum=0;
+        }
+        
+        return maxSum;
+        
+    }
+}
+
+
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+      int n=sc.nextInt();
+        int[] arr = new int[n];
+        for(int i=0; i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        int sum =0;
+        int maxSum=0;
+        
+        for(int i=0; i<n;i++){
+            for(int j=i; j<n;j++){
+                sum=0;
+                for(int k=i; k<=j; k++){
+                   sum+=arr[k];
+                }
+               maxSum=Math.max(maxSum,sum);
+            }
+        }
+         System.out.println(maxSum);
+    }
+}
+
+
+
+
+Reverse Array------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+         Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr= new int[n];
+        for(int i=0; i<n; i++){
+            arr[i]=sc.nextInt();
+        }
+        //2 4 8 3 5 -> 5 4 8 3 2 -> 5 3 8 4 2 
+        int left =0;//2
+        int right=n-1;//3
+        while(left<right){
+            //swap
+            int temp=arr[left];
+            arr[left]=arr[right];
+            arr[right]=temp;
+            
+            left++;
+            right--;
+        }
+        for(int ele:arr){
+            System.out.println(ele);
+        }
+    }
+}
+
+
+
+Rotate right ----------------------------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    
+    public static int[] reverse(int[] arr, int li, int ri){
+         while(li<ri){
+            //swap
+            int temp=arr[li];
+            arr[li]=arr[ri];
+            arr[ri]=temp;
+            
+            li++;
+            ri--;
+        }
+        return arr;
+    }
+
+    public static void main(String[] args) {
+      Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr= new int[n];
+        for(int i=0; i<n; i++){
+            arr[i]=sc.nextInt();
+        }
+        int k = sc.nextInt();
+        //if k==n, than after k rotations I'll get the same array
+        //1 2 3 4 5 6 7
+        //2
+        
+        //6 7 1 2 3 4 5
+        k=k%n;
+        int[] ans = reverse(arr, 0, n-1-k);// 5 4 3 2 1 6 7
+        ans = reverse(arr, n-k, n-1);// 5 4 3 2 1 7 6
+        ans = reverse(arr, 0, n-1);// 6 7 1 2 3 4 5
+        
+        for(int ele:ans){
+            System.out.print(ele+" ");
+        }
+        
+        
+        
+        
+        
+    }
+}
+
+
+
+Zeros and one-------------------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr= new int[n];
+        int count =0;
+        for(int i=0; i<n; i++){
+            arr[i]=sc.nextInt();
+            if(arr[i]==0)count++;
+        }
+        
+        for(int i=0; i<count; i++){
+            arr[i]=0;
+        }
+        for(int i=count; i<n; i++){
+            arr[i]=1;
+        }
+        
+        for(int ele:arr){
+            System.out.print(ele+" ");
+        }
+        
+        
+    }
+}
+
+
