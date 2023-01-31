@@ -1,0 +1,242 @@
+Sort colors------------------------------------------------
+class Solution {
+    
+    public void swap(int[] arr, int i, int j){
+        int temp=arr[i];
+        arr[i]=arr[j];
+        arr[j]=temp;
+    }
+    public void sortColors(int[] nums) {
+        int si=0;//2
+        int mid=0;//3
+        int ei=nums.length-1;//3
+       
+        //[0,0,1,1,2,2]
+        
+        while(mid<=ei){
+            if(nums[mid]==0){
+                swap(nums, mid, si);
+                si++;
+                mid++;
+            }else if(nums[mid]==1){
+                mid++;
+            }else if(nums[mid]==2){
+                swap(nums, mid, ei);
+                ei--;
+            }
+        }
+    }
+}
+
+
+
+Reach target-----------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+         Scanner sc = new Scanner(System.in);
+         int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i=0; i<n; i++){
+            arr[i]=sc.nextInt();
+        }
+        int target = sc.nextInt();
+        for(int i=0; i<n; i++){
+            for(int j=i+1; j<n; j++){
+                if(arr[i]+arr[j]==target){
+                    System.out.println(i+" "+j);
+                }
+            }
+        }
+    }
+}
+
+
+
+Target sum-----------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i=0; i<n; i++){
+            arr[i]=sc.nextInt();
+        }
+        int target = sc.nextInt();
+        
+        //sort array
+        Arrays.sort(arr);
+        
+        int left=0;//2
+        int right=n-1;//1
+        //3 3 5 5
+        while(left<right){
+            int sum = arr[left]+arr[right];//8
+            if(sum==target){
+                System.out.println(arr[left]+" "+arr[right]);//3 5
+                
+                //duplication check
+                while(left<right && arr[left]==arr[left+1]){
+                    left++;
+                }
+                while(left<right && arr[right]==arr[right-1]){
+                    right--;
+                }
+                
+                left++;
+                right--;
+                
+            }else if(target>sum){
+                left++;
+            }else{
+                right--;
+            }
+        }
+
+    }
+}
+
+
+
+
+
+
+Greatest till me------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i=0; i<n; i++){
+            arr[i]=sc.nextInt();
+        }
+//1 88 88 88 88 88 88
+        int max=arr[0];//88
+        for(int i=1; i<n;i++){//2
+            max=Math.max(max, arr[i]);//
+            arr[i]=max;
+        }
+        
+        for(int i:arr){
+            System.out.println(i+" ");
+        }
+    }
+}
+
+
+
+
+
+Print Prefix Sum between L and R---------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i=0; i<n; i++){
+            arr[i]=sc.nextInt();
+        }
+        
+        int l = sc.nextInt();
+        int r= sc.nextInt();
+        int sum=0;
+        //1 2 8 4 10 1 3 11 15 25
+        for(int i=0; i<arr.length; i++){
+            arr[i]=arr[i]+sum;//1 3 11 15
+            sum=arr[i];//15
+        }
+        
+        for(int i=l; i<=r; i++){
+            System.out.println(arr[i]);
+        }
+    }
+}
+
+
+
+
+Print Freq of alphabet in string -----------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        int[] freq = new int[26];
+        for(int i=0; i<s.length(); i++){
+            freq[(int)s.charAt(i)-97]++;
+        }
+        
+        for(int i=0; i<s.length(); i++){
+            if(freq[(int)s.charAt(i)-97]>0){
+                System.out.println(s.charAt(i)+"-"+freq[(int)s.charAt(i)-97]);
+                freq[(int)s.charAt(i)-97]=-1;   
+            }
+        }
+    }
+}
+
+
+
+
+
+
+Int with max frequncy-----------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i=0; i<n; i++){
+            arr[i]=sc.nextInt();
+        }
+        
+        int freq[]=new int[10];
+        int maxFreq=0;
+        int maxInt=-1;
+        
+        for(int i=0; i<n; i++){
+            int index=arr[i];
+            freq[index]=freq[index]+1;
+            
+            //finding max
+            if(freq[index]>maxFreq){
+                maxFreq=freq[index];
+                maxInt = arr[i];
+            }
+        }
+        
+        System.out.print(maxInt);
+    }
+}
+
+
+
+
+
+
+
+
+
+
