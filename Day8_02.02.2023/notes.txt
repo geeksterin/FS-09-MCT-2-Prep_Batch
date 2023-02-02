@@ -1,0 +1,165 @@
+Spiral Matrix------------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int[][] arr = new int[n][m];
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                arr[i][j]=sc.nextInt();
+            }
+        }
+        
+        int rowStart =0;//printing rows from starting 1
+        int rowEnd = n-1;//print rows from bottom 1
+        int colStart = 0; //printing cols from starting  1
+        int colEnd =m-1;//print cols from ending   2
+// 3 6 9 9
+// 1 8 6 6
+// 3 3 7 1
+        while(rowStart<=rowEnd && colStart<=colEnd){
+            //printing rows from starting
+            for(int col=colStart; col<=colEnd; col++){
+                System.out.print(arr[rowStart][col]+"   ");// 3 , 6 , 9 , 9  6 , 1   7 , 3 , 3 1  8 , 6
+            }
+            rowStart++;
+            
+            //printing cols from ending
+            for(int row=rowStart; row<=rowEnd; row++){
+                System.out.print(arr[row][colEnd]+"   "); // 
+            }
+            colEnd--;
+            
+             //printing rows from bottom
+            if(rowStart<=rowEnd){
+            for(int col=colEnd; col>=colStart; col--){
+                System.out.print(arr[rowEnd][col]+"   ");//
+            }
+            rowEnd--;
+                }
+            
+             //printing cols from starting
+            if(colStart<=colEnd){
+            for(int row=rowEnd; row>=rowStart; row--){
+                System.out.print(arr[row][colStart]+"   "); // 
+            }
+            colStart++;
+            }
+        }       
+    }
+}
+
+
+
+
+Transpose of matrix-----------------------------------------------
+
+         import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[][] arr = new int[n][n];
+        for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++){
+                arr[i][j]=sc.nextInt();
+            }
+        }
+        
+        int[][] ans=new int[n][n];
+        for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++){
+                ans[j][i]=arr[i][j];
+            }
+        }
+        
+         for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++){
+               System.out.print(ans[i][j]+" ");
+            }
+             System.out.println();
+        }
+       
+    }
+}
+
+
+
+Rotate matrix by 90---------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[][] arr = new int[n][n];
+        for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++){
+                arr[i][j]=sc.nextInt();
+            }
+        }  
+        
+        for(int i=0; i<n; i++){// printing column
+            for(int j=n-1; j>=0; j--){ //printing rows
+                System.out.print(arr[j][i]+" ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+
+Convert 1D to 2D array------------------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int p = sc.nextInt();
+        int[] arr = new int[p];
+        for(int i=0; i<p; i++){
+                arr[i]=sc.nextInt();
+        }
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int[][] ans = new int[n][m];
+        int idx=0;
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                ans[i][j]=arr[idx];
+                idx++;
+            }
+        }
+        
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                System.out.print(ans[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+Modify the matrix Algo-------------------------------------------------
+        1. Take input of the 2d array
+        2. Define method "modifyMatrix" to iterate over ur 2d array 
+            2.1 Define Method "FillMinusOne" to fill -1 in a row and column
+            2.2 Check if we are getting 1 at any index during our iteration in "modifyMatrix" method and call                            "FillMinusOne"
+        3. After the complete iteration fill all the minus one with One
+        4. print ur 2d array
