@@ -1,0 +1,147 @@
+Number of square matrix with all one----------------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int[][] arr = new int[n][m];
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                arr[i][j]=sc.nextInt();
+            }
+        }
+        
+        for(int i=1; i<n; i++){
+            for(int j=1; j<m; j++){
+                if(arr[i][j]==1){
+                    int min=Math.min(arr[i-1][j], arr[i][j-1]);
+                    arr[i][j]=Math.min(arr[i-1][j-1],min) + 1;
+                }
+            }
+        }
+        
+        int count =0;
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                count=count+arr[i][j];
+            }
+        }
+        System.out.println(count);
+    }
+}
+
+
+
+
+
+
+Generate Rotatios---------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        int n = s.length();//5
+        
+        for(int i=0; i<n; i++){//4
+             String a = s.substring(0, n-i);//g   // It will print my substring from index 0 to n-i-1
+             String b = s.substring(n-i);//eeks    // It will print my substring from n-i till last index
+            System.out.println(b+a);
+        }
+        
+        
+       
+    }
+}
+
+
+
+
+Find Unique--------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        int n = str.length();
+        int[] count = new int[10];
+        int ans=0;
+        for(int i=0; i<n; i++){
+            String curr="";
+            char ch = str.charAt(i);
+            curr+=ch;
+            int idx = Integer.parseInt(curr);
+            count[idx]++;
+        }
+        
+        for(int i=0; i<10; i++){
+            if(count[i]>0){
+                ans++;
+            }
+        }
+        System.out.print(ans);
+    }
+}
+
+
+
+
+
+Locate the target string----------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        String bstr = sc.next();
+        int idx = str.indexOf(bstr);
+        System.out.print(idx);
+    }
+}
+
+
+
+
+Print all sub strings-----------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        for(int i=0; i<str.length(); i++){
+            for(int j=i; j<str.length(); j++){
+                for(int k=i; k<=j; k++){
+                    System.out.print(str.charAt(k));
+                }
+                 System.out.println();
+            }
+             
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
