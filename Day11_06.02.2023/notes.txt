@@ -1,0 +1,229 @@
+Sum of all substrings--------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        int n = str.length();
+        int sum =0;
+        for(int i=0; i<n; i++){
+            for(int j=i; j<n; j++){
+                String curr="";
+                for(int k=i; k<=j; k++){
+                    curr=curr+str.charAt(k);//creating my substring
+                }
+                sum=sum+Integer.parseInt(curr);
+            }
+        }
+        System.out.println(sum);
+    }
+}
+
+
+
+
+
+
+Desired String---------------------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        int n = str.length();
+        int count=0;
+        int maxLen =0;
+        String maxStr = "";
+        boolean isExist = false;
+        
+
+        for(int i=0; i<n; i++){
+            for(int j=i; j<n; j++){
+                String curr="";
+                for(int k=i; k<=j; k++){//k=0
+                    curr=curr+str.charAt(k);//creating my substring
+                }
+                
+                if(curr.length()>1 && curr.charAt(0)=='A' &&  curr.charAt(curr.length()-1)=='A'){
+                    count++;
+                    int currLen = curr.length();
+                    if(currLen>maxLen){
+                        maxLen=currLen;
+                        maxStr = curr;
+                    }
+                    isExist = true;
+                }
+            }
+        }
+        
+        if(!isExist){
+            System.out.print(-1);
+        }else{
+            System.out.println(count);
+            System.out.println(maxLen);
+            System.out.println(maxStr);
+        }
+    }
+}
+
+
+
+
+
+Check Subsequence-------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();//abc
+        String target = sc.next();//afbghidc 
+        
+        int n = str.length();//3
+        int m = target.length();
+        int i=0, j=0;
+
+        while(i<n && j<m){// i=3 , j=8
+            if(str.charAt(i)==target.charAt(j)){
+                i++;
+                j++;
+            }else{
+                j++;
+            }
+        }
+        
+        if(i==n){
+            System.out.print("True");
+        }else{
+            System.out.print("False");
+        }
+    }
+}
+
+
+
+Max consecutive one--------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        int n = str.length();
+        int count=0;
+        int maxLen=0;
+        //0110111011211111
+        for(int i=0; i<n; i++){
+            if(str.charAt(i)=='1'){
+                count++;
+            }else{
+                count=0;
+            }
+            
+            if(count>maxLen){
+                maxLen=count;
+            }
+        }
+        
+        System.out.print(maxLen);
+    }
+}
+
+
+
+
+
+
+Count substring of 0 and 1------------------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    
+    public static int countSubstring(String str, int n){
+        int ans=0;
+        int i=0;
+        //00110011
+        while(i<n){//i=2
+            int count_0=0;//0
+            int count_1=0;//0
+            
+            if(str.charAt(i)=='0'){
+                while(i<n && str.charAt(i)=='0'){
+                    count_0++;//2
+                    i++;
+                }
+                int j=i;//j=2
+                while(j<n && str.charAt(j)=='1'){
+                    count_1++;//2
+                    j++;//4
+                }
+            }else{
+                while(i<n && str.charAt(i)=='1'){
+                    count_1++;
+                    i++;
+                }
+                int j=i;
+                while(j<n && str.charAt(j)=='0'){
+                    count_0++;
+                    j++;
+                } 
+            }
+            ans+=Math.min(count_0, count_1);//2
+        }
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        int n = str.length();
+        System.out.println(countSubstring(str, n));
+    }
+}
+
+
+
+
+Long Pressed Name-------------------------------------------
+class Solution {
+   public boolean isLongPressedName(String name, String typed) {
+        int i=0,j=0;
+        int len1=name.length();
+        int len2=typed.length();
+        while(i<len1 && j<len2)
+        {
+            if(name.charAt(i)==typed.charAt(j))
+            {
+                i++;
+                j++;
+            }
+            else if(j>0 && typed.charAt(j)==typed.charAt(j-1))
+            {
+                j++;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        while(j<len2)
+        {
+            if(typed.charAt(j)!=typed.charAt(j-1))
+                return false;
+            j++;
+        }
+        return i>=len1&&j>=len2;
+    }
+}
+
