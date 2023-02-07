@@ -1,0 +1,178 @@
+Is It A Panagram----------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+ 
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+       int n = str.length();
+        int freq[]=new int[26];
+        str= str.toLowerCase();
+        String ans="YES";
+        
+        for(int i=0; i<n; i++){
+            char ch = str.charAt(i);
+            if(ch>=97 && ch<=122){
+                int idx = ch-97;
+                freq[idx]++;
+            }
+        }
+        
+        for(int i=0; i<26; i++){
+            if(freq[i]<1){
+                ans="NO";
+            }
+        }
+        
+        System.out.print(ans);
+        
+    }
+}
+
+
+
+
+Check Anagram-----------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        String str1 = sc.nextLine();
+        int n = str1.length();
+        int freq1[]=new int[26];
+        str1= str1.toLowerCase();
+         for(int i=0; i<n; i++){
+            char ch = str1.charAt(i);
+            if(ch>=97 && ch<=122){
+                int idx = ch-97;//99-97=2
+                freq1[idx]++;
+            }
+        }
+        
+        String str2 = sc.nextLine();
+        int m = str2.length();
+        int freq2[]=new int[26];
+        str2= str2.toLowerCase();
+         for(int i=0; i<m; i++){
+            char ch = str2.charAt(i);
+            if(ch>=97 && ch<=122){
+                int idx = ch-97;//99-97=2
+                freq2[idx]++;
+            }
+        }
+        
+        for(int i=0; i<26; i++){
+            if(freq1[i] != freq2[i]){
+                System.out.print("False");
+                return;
+            }
+        }
+        System.out.print("True");
+        
+    }
+}
+
+
+
+
+Isogramic String----------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        int n = str.length();
+        
+        char[] arr = str.toCharArray();
+        Arrays.sort(arr);
+        
+        for(int i=0; i<n-1; i++){
+            if(arr[i] == arr[i+1]){
+                System.out.print("Not an Isogram");
+                return;
+            }
+        }
+        System.out.print("Isogram");
+    }
+}
+
+
+
+
+K frequent Characters----------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        int k = sc.nextInt();
+        int n = str.length();
+        int freq[]=new int[26];
+        str = str.toLowerCase();
+         for(int i=0; i<n; i++){
+            char ch = str.charAt(i);
+            if(ch>=97 && ch<=122){
+                int idx = ch-97;
+                freq[idx]++;
+            }
+        }
+        
+        
+        for(int i=0; i<k; i++){
+            int max=0;
+            int idx=0;
+            for(int j=0; j<26; j++){
+                if(freq[j]>max){
+                    max=freq[j];
+                    idx=j;
+                }
+            }
+            
+            System.out.print((char)(idx+97)+" ");
+            freq[idx]=-1;
+        }
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+ //----------Binary Search----------------
+int n=10;
+int[] arr = new int[n];
+int target = 123;
+
+int li=0; int ri=n-1;
+
+while(li<=ri){
+    int mid=(li+ri)/2;
+    if(target==arr[mid]){
+        print(ans);
+        return;
+    }
+    
+    if(target<arr[mid]){
+        ri=mid-1;
+    }else{
+        li=mid+1;
+    }
+}
+
+}
