@@ -1,0 +1,247 @@
+American Keyboard-----------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    
+    public static boolean checkString(String curr, String row){
+        for(int i=0; i<curr.length(); i++){//alaska //asdfghjkl
+            char ch = curr.charAt(i);//l
+            if(row.indexOf(ch)==-1)return false;
+        }
+        return true;
+    }
+    
+    public static void main(String[] args) {
+      Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt();
+        String[] arr = new String[n];
+        for(int i=0; i<n; i++){
+            arr[i]=sc.next();
+        }
+        
+        boolean flag=false;
+        String str1="qwertyuiop";
+        String str2="asdfghjkl";
+        String str3="zxcvbnm";
+
+        for(int i=0; i<n; i++){
+            String curr = arr[i];//alaska
+            
+            boolean check1 = checkString(curr, str1);//false
+            boolean check2 = checkString(curr, str2);// true
+            boolean check3 = checkString(curr, str3);// false
+            
+            if(check1 || check2 || check3){
+                System.out.print(curr+" ");
+                flag=true;
+            } 
+        }
+        
+        if(!flag) System.out.print(-1);
+    }
+}
+
+
+
+
+
+Find the square root-----------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    
+    public static int squareRoot(int n){
+        int low=1;
+        int high=n; //7
+        int ans=-1;
+        
+        while(low<=high){
+            int mid = (low+high)/2;//4
+            
+            if(mid*mid==n){
+                return mid;
+            }else if(mid*mid>n){
+                high=mid-1;
+            }else{
+                ans=mid;
+                low=mid+1;
+            }
+        }
+        
+        return ans;
+    }
+
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+       int n=sc.nextInt();
+        
+        int ans = squareRoot(n);
+        System.out.print(ans);
+    }
+}
+
+
+
+
+
+Leetcode solution----
+class Solution {
+    public int mySqrt(int x) {
+     // return (int)Math.sqrt(x);  
+        
+       
+        if(x == 1) return x;
+        int start = 2, end = x;
+        while(start <= end) {
+            long mid = start + (end - start)/2;
+            long sqrt = mid * mid;
+            if(sqrt == x) return (int) mid;
+            else if(sqrt > x)
+                end = (int) mid - 1;
+            else
+                start = (int) mid + 1;
+        }
+        return end;
+    }
+    
+    
+ Find the Index of Rotation-----------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt();
+        int[] arr = new int[n];
+        for(int i=0; i<n; i++){
+            arr[i]=sc.nextInt();
+        }
+        
+        int minIdx=0;
+        int min = Integer.MAX_VALUE;
+        //5 1 2 3 4
+        for(int i=0; i<n; i++){
+            if(arr[i]<min){
+                min = arr[i];//1
+                minIdx = i;1
+            }
+        }
+        System.out.print(minIdx-1);
+    }
+}
+
+
+
+
+
+
+Find the element in the rotated array Leetcode solution ----------------------------------------
+
+class Solution {
+   public int search(int[] nums, int target) {
+        
+        int start = 0;
+        int end = nums.length - 1;
+        
+        while(start <= end){
+            
+            int mid = (start + end)/2;
+            
+            if(nums[mid] == target){
+                return mid;
+            }
+            
+            if(nums[start]<=nums[mid]){
+                //the part of array [start, mid) is sorted ascendingly
+                if(target >= nums[start] && target < nums[mid]){ 
+                    end = mid - 1;
+                }else{
+                    start = mid + 1;
+                }
+                
+            }else{
+			// the part of array (mid, end] is sorted ascendingly
+                if(target > nums[mid] && target <= nums[end]){
+                    start = mid + 1;
+                }else{
+                    end = mid - 1;
+                }
+            }
+            
+        }
+        
+        return -1;
+        
+    }
+}
+
+
+
+
+
+
+Subtract the Product and Sum of Digits of an Integer 1--------------------------------------------------
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+         Scanner sc = new Scanner(System.in);
+         int n=sc.nextInt();
+        int sum=0;
+        int product=1;
+        while(n>0){
+            int lastDigit = n%10;
+            sum = sum+lastDigit;
+            product = product * lastDigit;
+            n = n/10;
+        }
+        System.out.print(product-sum);
+    }
+}
+
+
+
+
+Trailing Zeroes In factorial--------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt();//10
+        int count=0;
+        if(n<0){
+            System.out.print(-1);
+        }else{
+            for(int i=5; n/i>=1; i*=5){//
+                count+=n/i;//2
+            }
+            System.out.print(count);
+            
+        }
+    }
+}
+
+--Leetcode---
+class Solution {
+    public int trailingZeroes(int n) {
+    if(n == 0) return 0;
+    
+    int count = 0;
+    while(n >= 5){
+        count += n / 5;
+        n = n / 5;
+    }
+    
+    return count;
+}
+}
